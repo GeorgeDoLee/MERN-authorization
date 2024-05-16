@@ -99,8 +99,8 @@ const SignInPage = () => {
 
   return (
     <MainLayout>
-        <section className='container'>
-            <div className='flex flex-col w-full max-w-sm mx-auto mt-10'>
+        <section className='container py-20'>
+            <div className='flex flex-col w-full max-w-sm mx-auto'>
                 <h1 className='self-center text-xl font-semibold text-zinc-800'>Sign In</h1>
                 <form onSubmit={handleSubmit(submitHandler)}>
                     {formItems.map((item, index) => (

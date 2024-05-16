@@ -78,10 +78,10 @@ const FormItemsRenderer = ({item, register, errors, password}) => {
                     } : null,
                 })}
                 placeholder={`Enter ${item.text.toLowerCase()}`} 
-                className='border mt-2 rounded-md border-zinc-800 p-2 outline-none'
+                className='p-2 mt-2 border rounded-md outline-none border-zinc-800'
             />
             {errors[item.id]?.message && (
-                <p className=' text-md text-red-500'>{errors[item.id].message}</p>
+                <p className='text-red-500 text-md'>{errors[item.id].message}</p>
             )}
         </div>
     );
@@ -129,14 +129,14 @@ const SignUpPage = () => {
 
   return (
     <MainLayout>
-        <section className='container'>
-            <div className='flex flex-col w-full max-w-sm mx-auto mt-10'>
+        <section className='container py-20'>
+            <div className='flex flex-col w-full max-w-sm mx-auto'>
                 <h1 className='self-center text-xl font-semibold text-zinc-800'>Sign Up</h1>
                 <form onSubmit={handleSubmit(submitHandler)}>
                     {formItems.map((item, index) => (
                         <FormItemsRenderer key={index} item={item} register={register} errors={errors} password={password} />
                     ))}
-                    <button disabled={!isValid || isLoading} className='disabled:opacity-70 disabled:cursor-not-allowed text-center w-full border-2 border-zinc-800 rounded-md py-2 mt-5 text-lg font-semibold'>REGISTER</button>
+                    <button disabled={!isValid || isLoading} className='w-full py-2 mt-5 text-lg font-semibold text-center border-2 rounded-md disabled:opacity-70 disabled:cursor-not-allowed border-zinc-800'>REGISTER</button>
                 </form>
                 <div className='flex gap-2 mt-2 text-md'>
                     <span>Already have an account?</span><Link to='/sign-in' className='text-blue-900'>Sign In</Link>
