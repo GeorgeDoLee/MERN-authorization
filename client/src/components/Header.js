@@ -11,14 +11,14 @@ const navItems = [
     },
     {
         name: 'About Us',
-        link: '/about-us'
+        link: '/'
     },
     {
         name: 'Contact Us',
-        link: '/contact-us'
+        link: '/'
     }
 ]
- 
+
 const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -30,17 +30,17 @@ const Header = () => {
     }
 
   return (
-    <section className='container px-10 py-4 sticky top-0 right-0 bottom-0 border-b border-zinc-800'>
+    <section className='container sticky top-0 bottom-0 right-0 px-10 py-4 shadow-md'>
         <div className='flex justify-between'>
-            <h1 className='font-bold text-2xl text-zinc-800'>
+            <h1 className='text-2xl font-bold text-zinc-800'>
                 AUTH
             </h1>
 
-            <div className='flex gap-8 items-center'>
+            <div className='flex items-center gap-8'>
                 <nav>
                     <ul className='flex gap-10'>
                         {navItems.map((item, index) => (
-                            <li key={index} className='text-lg font-semibold'>
+                            <li key={index} className='text-lg font-semibold text-zinc-800'>
                                 <Link to={item.link} >{item.name}</Link>
                             </li>
                         ))}
@@ -49,11 +49,11 @@ const Header = () => {
                         
                 {!userInfo ? (
                     <div className='flex gap-5'>
-                        <button onClick={() => navigate('/sign-in')} className='border border-zinc-800 px-5 py-1 rounded-md'>Sign In</button>
-                        <button onClick={() => navigate('/sign-up')} className='border border-zinc-800 px-5 py-1 rounded-md'>Sign Up</button>
+                        <button onClick={() => navigate('/sign-in')} className='px-5 py-1 text-base font-semibold border-2 rounded-md border-zinc-800'>Sign In</button>
+                        <button onClick={() => navigate('/sign-up')} className='px-5 py-1 text-base font-semibold border-2 rounded-md border-zinc-800'>Sign Up</button>
                     </div>
                 ) : (
-                    <button onClick={() => logoutHandler()} className='border border-zinc-800 px-5 py-1 rounded-md'>Log Out</button>
+                    <button onClick={() => logoutHandler()} className='px-5 py-1 text-base font-semibold border-2 rounded-md border-zinc-800'>Log Out</button>
                 )}
             </div>
         </div>

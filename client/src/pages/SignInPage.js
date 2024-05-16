@@ -53,10 +53,10 @@ const FormItemsRenderer = ({item, register, errors}) => {
                     },
                 })}
                 placeholder={`Enter ${item.text.toLowerCase()}`} 
-                className='border mt-2 rounded-md border-zinc-800 p-2 outline-none'
+                className='p-2 mt-2 border rounded-md outline-none border-zinc-800'
             />
             {errors[item.id]?.message && (
-                <p className=' text-md text-red-500'>{errors[item.id].message}</p>
+                <p className='text-base text-red-500'>{errors[item.id].message}</p>
             )}
         </div>
     );
@@ -106,9 +106,9 @@ const SignInPage = () => {
                     {formItems.map((item, index) => (
                         <FormItemsRenderer key={index} item={item} register={register} errors={errors} />
                     ))}
-                    <button disabled={!isValid || isLoading} className='disabled:opacity-70 disabled:cursor-not-allowed text-center w-full border-2 border-zinc-800 rounded-md py-2 mt-5 text-lg font-semibold'>SIGN IN</button>
+                    <button disabled={!isValid || isLoading} className='w-full py-2 mt-5 text-lg font-semibold text-center border-2 rounded-md disabled:opacity-70 disabled:cursor-not-allowed border-zinc-800'>SIGN IN</button>
                 </form>
-                <div className='flex gap-2 mt-2 text-md'>
+                <div className='flex gap-2 mt-2 text-base'>
                     <span>Don't have an account?</span><Link to='/sign-up' className='text-blue-900'>Sign Up</Link>
                 </div>
             </div>
