@@ -1,9 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 
 import MainLayout from '../components/MainLayout'
-
+import { useMutation } from '@tanstack/react-query';
+import { signup } from '../services/authServices';
+import { setUserInfo } from '../store/reducers/userReducers'
 
 const formItems = [
     {
@@ -22,7 +26,7 @@ const formItems = [
         type: 'email',
         minLength: 0,
         pattern: {
-            value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[A-Z]{2,}$/i,
+            value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
             message: 'Enter correct email address'
         }
     },
@@ -84,6 +88,9 @@ const FormItemsRenderer = ({item, register, errors, password}) => {
 }
  
 const SignUpPage = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const userInfo = useSelector(state => state.user.userInfo);
     const { register, handleSubmit, formState: {errors, isValid}, watch} = useForm({
         defaultValues: {
             name: '',
@@ -94,10 +101,30 @@ const SignUpPage = () => {
         mode: 'onChange'
     })
 
+    const {mutate, isLoading} = useMutation({
+        mutationFn: ({name, email, password}) => {
+            return signup({name, email, password});
+        },
+        onSuccess: (data) => {
+            dispatch(setUserInfo(data));
+            localStorage.setItem('account', JSON.stringify(data));
+        },
+        onError: (error) => {
+            toast.error(error.message);
+        }
+    })
+    
+    useEffect(() => {
+        if(userInfo){
+            navigate('/');
+        }
+    })
+
     const password = watch('password');
 
     const submitHandler = (data) => {
-        console.log(data);
+        const {name, email, password} = data;
+        mutate({name, email, password});
     }
 
   return (
@@ -107,9 +134,9 @@ const SignUpPage = () => {
                 <h1 className='self-center text-xl font-semibold text-zinc-800'>Sign Up</h1>
                 <form onSubmit={handleSubmit(submitHandler)}>
                     {formItems.map((item, index) => (
-                        <FormItemsRenderer item={item} register={register} errors={errors} password={password} />
+                        <FormItemsRenderer key={index} item={item} register={register} errors={errors} password={password} />
                     ))}
-                    <button className='text-center w-full border-2 border-zinc-800 rounded-md py-2 mt-5 text-lg font-semibold'>REGISTER</button>
+                    <button disabled={!isValid || isLoading} className='disabled:opacity-70 disabled:cursor-not-allowed text-center w-full border-2 border-zinc-800 rounded-md py-2 mt-5 text-lg font-semibold'>REGISTER</button>
                 </form>
                 <div className='flex gap-2 mt-2 text-md'>
                     <span>Already have an account?</span><Link to='/sign-in' className='text-blue-900'>Sign In</Link>
