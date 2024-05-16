@@ -28,7 +28,7 @@ const Header = () => {
     const navigate = useNavigate();
 
   return (
-    <section className='container px-5 py-4 sticky top-0 right-0 bottom-0'>
+    <section className='container px-5 py-4 sticky top-0 right-0 bottom-0 border-b border-zinc-800'>
         <div className='flex justify-between'>
             <h1 className='font-bold text-2xl text-zinc-800'>
                 AUTH
@@ -36,7 +36,7 @@ const Header = () => {
 
             <div className='flex gap-8 items-center'>
                 <nav>
-                    <ul className='flex gap-5'>
+                    <ul className='flex gap-10'>
                         {navItems.map((item, index) => (
                             <NavItemRenderer item={item} />
                         ))}
