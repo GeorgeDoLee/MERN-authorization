@@ -30,12 +30,12 @@ const updateProfile = async (req, res, next) => {
             throw new Error('user not found');
         }
 
-        user.name = req.body.name || user.name;
-        user.email = req.body.email || user.email;
-        if(req.body.password && req.body.password < 8){
+        user.name = req.body.newName || user.name;
+        user.email = req.body.newEmail || user.email;
+        if(req.body.newPassword && req.body.newPassword < 8){
             throw new Error('password must be at least 8 characters');
-        } else if(req.body.password){
-            user.password = req.body.password;
+        } else if(req.body.newPassword){
+            user.password = req.body.newPassword;
         }
 
         const updatedUserProfile = await user.save();
