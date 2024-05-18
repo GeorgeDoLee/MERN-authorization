@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { resetUserInfo } from '../store/reducers/userReducers';
+import { useQueryClient } from '@tanstack/react-query';
 
 const navItems = [
     {
@@ -22,11 +23,13 @@ const navItems = [
 const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const queryClient = useQueryClient();
     const userInfo = useSelector(state => state.user.userInfo);
 
     const logoutHandler = () => {
         dispatch(resetUserInfo());
         localStorage.removeItem('account');
+        queryClient.invalidateQueries(['profile']);
     }
 
   return (

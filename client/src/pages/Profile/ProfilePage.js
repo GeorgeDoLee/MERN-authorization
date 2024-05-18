@@ -19,7 +19,7 @@ const ProfilePage = () => {
     })
 
     useEffect(() => {
-        if (!userInfo) {
+        if (!user) {
             navigate('/');
         }
     }, [navigate, userInfo]);
