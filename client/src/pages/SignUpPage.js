@@ -16,8 +16,8 @@ const formItems = [
         type: 'text',
         minLength: '1',
         pattern: {
-            value: /^[a-z0-9_.-]+$/i,
-            message: 'You can only use letters, digits and symbols: _ - .',
+            value: /^[a-z0-9_.-]+$/,
+            message: 'You can only use lowercase letters, digits and symbols: _ - .',
         }
     },
     {
@@ -77,7 +77,7 @@ const FormItemsRenderer = ({item, register, errors, password}) => {
                         }
                     } : null,
                 })}
-                placeholder={`Enter ${item.text.toLowerCase()}`} 
+                placeholder={item.id === 'confirmPassword' ? item.text : `Enter ${item.text.toLowerCase()}`} 
                 className='p-2 mt-2 border rounded-md outline-none border-zinc-800'
             />
             {errors[item.id]?.message && (

@@ -10,6 +10,10 @@ import Home from './pages/Home';
 import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
 import store from './store/store';
+import ProfilePage from './pages/Profile/ProfilePage';
+import EditProfile from './pages/Profile/EditProfile';
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -26,11 +30,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/profile',
-    element: <div>profile</div>
+    element: <ProfilePage />,
+    children: [ 
+      {
+        path: '/profile/edit',
+        element: <EditProfile />
+      }
+    ] 
   }
 ])
-
-const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

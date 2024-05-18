@@ -53,7 +53,10 @@ const Header = () => {
                         <button onClick={() => navigate('/sign-up')} className='px-5 py-1 text-base font-semibold border-2 rounded-md border-zinc-800'>Sign Up</button>
                     </div>
                 ) : (
-                    <button onClick={() => logoutHandler()} className='px-5 py-1 text-base font-semibold border-2 rounded-md border-zinc-800'>Log Out</button>
+                    <div className='flex gap-5'>
+                        <button onClick={() => navigate('/profile')} className='px-5 py-1 text-base font-semibold border-2 rounded-md border-zinc-800'>Profile</button>
+                        <button onClick={() => logoutHandler()} className='px-5 py-1 text-base font-semibold border-2 rounded-md border-zinc-800'>Log Out</button>
+                    </div>
                 )}
             </div>
         </div>
