@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { TbUserSquare } from "react-icons/tb";
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ const ProfilePage = () => {
         if (!user) {
             navigate('/');
         }
-    }, [navigate, userInfo]);
+    }, [navigate, user]);
 
     return (
         <MainLayout>
@@ -30,17 +30,17 @@ const ProfilePage = () => {
                 <div className='flex flex-col items-center max-w-sm gap-5 mx-auto'>
                         <div className='flex gap-5'>
                         {userInfo?.avatar ? (
-                            <img src={userInfo?.avatar} alt="user image" className='h-auto w-28' />
+                            <img src={userInfo?.avatar} alt="user image" className='w-20 h-auto sm:w-28' />
                         ) : (
-                            <TbUserSquare className='h-auto w-28 text-zinc-800' />
+                            <TbUserSquare className='w-20 h-auto sm:w-28 text-zinc-800' />
                         )}
 
                         <div className='flex flex-col justify-center gap-1 text-zinc-800'>
-                            <p className='flex items-center justify-between gap-3 text-3xl font-semibold'>
+                            <p className='flex items-center justify-between gap-3 text-xl font-semibold sm:text-3xl'>
                                 {userInfo?.name.toUpperCase()}
                                 <FaRegEdit onClick={() => navigate('/profile/edit')} className='w-6 h-auto' />
                             </p>
-                            <p className='text-lg'>{userInfo?.email}</p>
+                            <p className='text-base sm:text-lg'>{userInfo?.email}</p>
                         </div>
                     </div>
                 </div> 

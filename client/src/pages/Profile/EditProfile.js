@@ -163,21 +163,21 @@ const EditProfile = () => {
                 <FormItemsRenderer key={index} item={item} register={register} errors={errors} newPassword={newPassword} />
             ))}
             <div className='flex justify-between mt-2 text-zinc-800'>
-                <button disabled={updateIsLoading || deletionIsLoading} onClick={() => navigate('/profile')} className='px-2 py-1 border rounded-md disabled:cursor-not-allowed disabled:opacity-70 border-zinc-800'>
+                <button disabled={updateIsLoading || deletionIsLoading} onClick={() => navigate('/profile')} className='px-1 py-1 text-sm border rounded-md sm:px-2 sm:text-base disabled:cursor-not-allowed disabled:opacity-70 border-zinc-800'>
                     Cancel
                 </button>
                 <div className='flex gap-2'>
                     <button 
                         disabled={deletionIsLoading}
                         onClick={(e) => deleteHandler(e)} 
-                        className='px-2 py-1 text-red-500 border border-red-500 rounded-md disabled:cursor-not-allowed disabled:opacity-70'
+                        className='px-1 py-1 text-sm text-red-500 border border-red-500 rounded-md sm:px-2 sm:text-base disabled:cursor-not-allowed disabled:opacity-70'
                     >
                         Delete Account
                     </button>
                     <button 
                         disabled={updateIsLoading || !isValid}
                         type='submit'
-                        className='px-2 py-1 border rounded-md disabled:cursor-not-allowed disabled:opacity-70 border-zinc-800'
+                        className='px-1 py-1 text-sm border rounded-md sm:px-2 sm:text-base disabled:cursor-not-allowed disabled:opacity-70 border-zinc-800'
                     >
                         Save Changes
                     </button>

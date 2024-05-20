@@ -6,7 +6,7 @@ import MainLayout from '../components/MainLayout'
 const Home = () => {
   return (
     <MainLayout>
-        home page
+        {/* home page */}
     </MainLayout>
   )
 }
