@@ -3,6 +3,9 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const linkedin = 'https://www.linkedin.com/in/giorgi-dolidze-05428b278/';
+  const github = 'https://github.com/GeorgeDoLee';
+  
   return (
     <section className='container px-5 py-10 sm:px-10 bg-zinc-800'>
       <div className='flex flex-col items-center gap-10 text-white'>
@@ -27,8 +30,12 @@ const Footer = () => {
           </p>
           
           <div className='flex gap-5'>
-            <FaLinkedin className='w-6 h-auto sm:w-8' />
-            <FaGithub className='w-6 h-auto sm:w-8' />
+            <a href={linkedin} target='_blank' rel='noopener noreferrer'>
+              <FaLinkedin className='w-6 h-auto cursor-pointer sm:w-8' />
+            </a>
+            <a href={github} target='_blank' rel='noopener noreferrer'>
+              <FaGithub className='w-6 h-auto cursor-pointer sm:w-8' />  
+            </a>
           </div>
         </div>
       </div>

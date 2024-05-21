@@ -44,7 +44,7 @@ const Header = () => {
   return (
     <section className='container sticky top-0 bottom-0 right-0 px-5 py-4 shadow-md sm:px-10'>
         <div className='relative flex items-center justify-between'>
-            <h1 className='text-xl font-bold md:text-2xl text-zinc-800'>
+            <h1 onClick={() => navigate('/')} className='text-xl font-bold cursor-pointer md:text-2xl text-zinc-800'>
                 AUTH
             </h1>
             {navShowing ? (
